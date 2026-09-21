@@ -19,5 +19,7 @@ public class Article_Page_Test {
 		
 		dr.findElement(By.xpath("//input[@id = 'searchInput']")).sendKeys("Youtube");
 		dr.findElement(By.xpath("//button[@type='submit']/child::i")).click();
+		
+		dr.quit();
 	}
 }
