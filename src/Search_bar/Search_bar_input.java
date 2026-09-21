@@ -13,6 +13,7 @@ public class Search_bar_input {
 		dr.findElement(By.xpath("//input[@id ='searchInput']")).sendKeys("Amazon");
 		dr.findElement(By.xpath("//button[@type='submit']")).click();
 		
+		dr.quit();
 	}
 
 }
