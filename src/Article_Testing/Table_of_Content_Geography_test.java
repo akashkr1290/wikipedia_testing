@@ -17,7 +17,6 @@ public class Table_of_Content_Geography_test {
 		dr.findElement(By.xpath("//input[@id='searchInput']")).sendKeys("India");
 		dr.findElement(By.xpath("//button[@type='submit']")).click();
 		
-		//dr.findElement(By.xpath("//input[@id='vector-page-titlebar-toc-checkbox']")).click();
 		
 		if(dr.findElement(By.xpath("//div[@id='vector-toc']")).isDisplayed()) {
 			System.out.println("Table of Content Show");
