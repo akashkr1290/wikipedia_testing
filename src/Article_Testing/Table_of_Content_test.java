@@ -23,6 +23,5 @@ public class Table_of_Content_test {
 			System.out.println("Table of Content not show");
 		}
 		
-
 	}
 }
