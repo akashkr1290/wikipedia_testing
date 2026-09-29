@@ -18,7 +18,7 @@ public class Back_Button_Test {
 		dr.findElement(By.xpath("//input[@aria-label = 'Search Wikipedia'  and @title='Search Wikipedia [alt-f]']")).sendKeys("Youtube");
 		dr.findElement(By.xpath("//button[text()='Search']")).click();
 		dr.navigate().back();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		String title2 = dr.findElement(By.xpath("//span[@class = 'mw-page-title-main']/parent::span/parent::h1")).getText();
 		
 		if(title.equals(title2)) {
