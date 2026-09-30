@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Invalid_keyword {
 
-	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 public static void main(String[] args) {
 
@@ -26,6 +25,7 @@ public class Invalid_keyword {
 
 		        if (title.contains("Search results")) {
 		            System.out.println("Test Passed: Search page opened.");
+		        }
 
 	}
 
