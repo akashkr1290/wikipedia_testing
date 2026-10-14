@@ -13,7 +13,7 @@ public class Refresh_Button_Test {
 		// TODO Auto-generated method stub
 		
 		Properties pr = new Properties();
-		FileInputStream fs = new FileInputStream("E:\\PROJECT\\wikipedia_testing\\Xpath.properties");
+		FileInputStream fs = new FileInputStream("E:\\PROJECT\\wikipedia_testing\\src\\test\\resources\\Xpath.properties");
 		pr.load(fs);
 		Thread.sleep(2000);
 		
