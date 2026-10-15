@@ -24,7 +24,6 @@ public class Article_Title_Test_LocatorManager {
 		ed.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("Youtube");
 		ed.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
 		
-		
 	}
 
 }

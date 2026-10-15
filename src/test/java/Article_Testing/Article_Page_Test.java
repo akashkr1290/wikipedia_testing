@@ -3,12 +3,16 @@ package Article_Testing;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import LocaterManager.LocaterManager;
+
 public class Article_Page_Test {
 	public static void main(String args[]) {
 		
+		LocaterManager Lm = new LocaterManager();
+		
 		ChromeDriver dr = new ChromeDriver();
-		dr.get("https://www.google.com");
-		dr.navigate().to("https://www.wikipedia.org");
+		dr.get(Lm.getXpath("google_Url"));
+		dr.navigate().to(Lm.getXpath("wikipedia_Url"));
 		
 		try {
 			dr.findElement(By.xpath("//button[@aria-label='minimize']")).click();
@@ -17,8 +21,12 @@ public class Article_Page_Test {
 			System.out.println(e);
 		}
 		
-		dr.findElement(By.xpath("//input[@id = 'searchInput']")).sendKeys("Youtube");
-		dr.findElement(By.xpath("//button[@type='submit']/child::i")).click();
+		dr.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("Youtube");
+		dr.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
+		
+		System.out.println("Test is Pass");
+		
+		dr.quit();
 		
 	}
 }

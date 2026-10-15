@@ -26,3 +26,4 @@ public class LocaterManager {
         return p.getProperty(key);
     }
 }
+
