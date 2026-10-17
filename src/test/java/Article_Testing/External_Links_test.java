@@ -4,19 +4,24 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import LocaterManager.LocaterManager;
 public class External_Links_test {
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws InterruptedException {
+		LocaterManager Lm = new LocaterManager();
 		ChromeDriver dr = new ChromeDriver();
+		
 		dr.manage().window().maximize();
-		//dr.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		dr.get("https://www.google.com");
-		dr.navigate().to("https://www.wikipedia.org");
 		
-		dr.findElement(By.xpath("//input[@id='searchInput']")).sendKeys("India");
-		dr.findElement(By.xpath("//button[@type = 'submit']")).click();
+		dr.get(Lm.getXpath("google_Url"));
+		dr.navigate().to(Lm.getXpath("wikipedia_Url"));
 		
-		dr.findElement(By.xpath("//a[@href='#External_links']/child::div/child::span[2]")).click();
+		dr.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("India");
+		dr.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
+		
+		Thread.sleep(2000);
+		dr.findElement(By.xpath(Lm.getXpath("External_Link"))).click();
 		
 		System.out.println("External Link Test Pass");
 		dr.quit();
