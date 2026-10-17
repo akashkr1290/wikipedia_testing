@@ -3,22 +3,26 @@ package Article_Testing;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import LocaterManager.LocaterManager;
+
 public class Internal_Link_Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
+		LocaterManager Lm = new LocaterManager();
 		ChromeDriver dr = new ChromeDriver();
 		
-		dr.get("https://www.google.com");
-		dr.navigate().to("https://www.wikipedia.com");
+		dr.get(Lm.getXpath("google_Url"));
+		dr.navigate().to(Lm.getXpath("wikipedia_Url"));
 		
-		dr.findElement(By.xpath("//input[@id = 'searchInput']")).sendKeys("India");
-		dr.findElement(By.xpath("//button[@type='submit']")).click();
+		dr.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("India");
+		dr.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
 		
-		dr.findElement(By.xpath("//a[@id = 'mwmQ']")).click();
+		Thread.sleep(2000);
+		dr.findElement(By.xpath(Lm.getXpath("Internal_South_Asia_Xpath"))).click();
 		
-		
+		System.out.println("Internal link working");
 		dr.quit();
 		
 		
