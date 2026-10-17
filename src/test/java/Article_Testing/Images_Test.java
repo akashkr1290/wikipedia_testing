@@ -3,24 +3,27 @@ package Article_Testing;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import LocaterManager.LocaterManager;
+
 public class Images_Test {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
+		
+		LocaterManager Lm = new LocaterManager();
 		ChromeDriver dr = new ChromeDriver();
 		dr.manage().window().maximize();
 		
-		dr.get("https://www.google.com");
-		dr.navigate().to("https://wikipedia.org");
+		dr.get(Lm.getXpath("google_Url"));
+		dr.navigate().to(Lm.getXpath("wikipedia_Url"));
 		
-		dr.findElement(By.xpath("//input[@id='searchInput']")).sendKeys("india");
-		dr.findElement(By.xpath("//button[@type='submit']")).click();
+		dr.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("india");
+		dr.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
 		
-		
-		
-		if((dr.findElement(By.xpath("//a[@class = 'mw-file-description' and contains(@title,'Flag')]"))).isDisplayed()) {
+		Thread.sleep(2000);
+		if((dr.findElement(By.xpath(Lm.getXpath("Flag_Image_Xpath")))).isDisplayed()) {
 			
-			dr.findElement(By.xpath("//a[@class = 'mw-file-description' and contains(@title,'Flag')]")).click();
+			dr.findElement(By.xpath(Lm.getXpath("Flag_Image_Xpath"))).click();
 			System.out.println("Image 1 is showned");
 			
 		}else {
@@ -29,8 +32,8 @@ public class Images_Test {
 		
 		dr.navigate().back();
 		Thread.sleep(2000);
-		if(dr.findElement(By.xpath("//a[@class = 'mw-file-description']/img[contains(@resource,'Emblem_of_India')]")).isDisplayed()) {
-			dr.findElement(By.xpath("//a[@class = 'mw-file-description']/img[contains(@resource,'Emblem_of_India')]")).click();
+		if(dr.findElement(By.xpath(Lm.getXpath("EOF_image_Xpath"))).isDisplayed()) {
+			dr.findElement(By.xpath(Lm.getXpath("EOF_image_Xpath"))).click();
 			System.out.println("Image 2 is showned");
 		}else {
 			System.out.println("Image 2 Not Showned");
