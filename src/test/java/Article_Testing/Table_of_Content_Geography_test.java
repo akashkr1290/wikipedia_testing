@@ -3,24 +3,28 @@ package Article_Testing;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import LocaterManager.LocaterManager;
+
 public class Table_of_Content_Geography_test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 
-		
+		LocaterManager Lm = new LocaterManager();
 		ChromeDriver dr = new ChromeDriver();
 		dr.manage().window().maximize();
-		dr.get("https://www.google.com");
-		dr.navigate().to("https://www.wikipedia.com");
 		
-		dr.findElement(By.xpath("//input[@id='searchInput']")).sendKeys("India");
-		dr.findElement(By.xpath("//button[@type='submit']")).click();
+		dr.get(Lm.getXpath("google_Url"));
+		dr.navigate().to(Lm.getXpath("wikipedia_Url"));
+		
+		dr.findElement(By.xpath(Lm.getXpath("SearchXpath"))).sendKeys("India");
+		dr.findElement(By.xpath(Lm.getXpath("searchButtonXpath"))).click();
 		
 		
-		if(dr.findElement(By.xpath("//div[@id='vector-toc']")).isDisplayed()) {
+		if(dr.findElement(By.xpath(Lm.getXpath("TOC_Xpath"))).isDisplayed()) {
 			System.out.println("Table of Content Show");
-			dr.findElement(By.xpath("//div[@id='vector-toc']//a[@href='#Geography']")).click();
+			Thread.sleep(2000);
+			dr.findElement(By.xpath(Lm.getXpath("Geography_Toc_Xpath"))).click();
 
 			if (dr.getCurrentUrl().contains("#Geography")) {
 				System.out.println("PASS: Geography section par page gaya");
@@ -30,6 +34,8 @@ public class Table_of_Content_Geography_test {
 		}else {
 			System.out.println("Table of Content not show");
 		}
+		
+		dr.quit();
 	}
 
 }
