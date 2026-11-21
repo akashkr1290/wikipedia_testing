@@ -1,6 +1,8 @@
 package LocaterManager;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -9,17 +11,22 @@ public class LocaterManager {
     static Properties p = new Properties();
 
     static {
-        try (InputStream in = openProps()) {
-            p.load(in);
-        } catch (Exception e) {
-            throw new RuntimeException("Xpath.properties nahi mili", e);
-        }
-    }
-
-    private static InputStream openProps() throws Exception {
-        InputStream in = LocaterManager.class.getClassLoader().getResourceAsStream("Xpath.properties");
-        if (in != null) return in;
-        return new FileInputStream("src/test/resources/Xpath.properties");
+    	FileInputStream f = null;
+    	
+    	try {
+    		f = new FileInputStream("src\\test\\resources\\Xpath.properties");
+    	} catch(FileNotFoundException  e) {
+    		e.printStackTrace();
+    	}
+    	
+    	try {
+    		p.load(f);
+    	}catch(IOException e) {
+    		e.printStackTrace();
+   
+    	}
+    	
+    	
     }
 
     public static String getXpath(String key) {
