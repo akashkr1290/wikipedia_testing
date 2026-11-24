@@ -1,4 +1,4 @@
-package Article_Testing;
+package Article_Page_Open;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;

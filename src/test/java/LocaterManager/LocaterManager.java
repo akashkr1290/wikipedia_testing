@@ -25,8 +25,6 @@ public class LocaterManager {
     		e.printStackTrace();
    
     	}
-    	
-    	
     }
 
     public static String getXpath(String key) {
